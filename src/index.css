@@ -1,0 +1,201 @@
+﻿@import 'tailwindcss';
+
+@theme {
+  --font-display: 'Cinzel', serif;
+  --font-body: 'EB Garamond', Georgia, serif;
+
+  /* Warm earthy / charcoal palette */
+  --color-forest-deep: #201713;
+  --color-forest: #2b201a;
+  --color-forest-mid: #3a2b22;
+  --color-forest-moss: #3f3127;
+
+  --color-parchment: #e5dcc4;
+  --color-parchment-dim: #c9bca0;
+  --color-ink: #1c1612;
+
+  --color-iron: #3e3834;
+  --color-iron-dark: #23201d;
+  --color-metal-light: #a2968a;
+
+  --color-gold: #c5a059;
+  --color-gold-bright: #d8b26a;
+
+  /* Compatibility aliases for existing class names */
+  --color-wood-deep: var(--color-forest-deep);
+  --color-wood: var(--color-forest);
+  --color-wood-mid: var(--color-forest-mid);
+  --color-wood-light: var(--color-forest-moss);
+}
+
+@layer base {
+  html {
+    @apply antialiased;
+  }
+
+  body {
+    @apply m-0 min-h-svh font-[family-name:var(--font-body)] text-parchment/95;
+    position: relative;
+    background: linear-gradient(180deg, #171311 0%, #100d0b 100%);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+
+  #root {
+    @apply min-h-svh;
+  }
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.32;
+  background-image:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 1600 900' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='1600' height='900' fill='%23100d0b'/%3E%3Cg fill='%231d1714'%3E%3Cpath d='M0 900V650l55-70 36 58 32-94 44 94 47-78 52 78 49-108 66 108 58-82 42 82 57-98 65 98 49-74 44 74 48-99 59 99 58-76 56 76 64-120 69 120 61-86 54 86 56-70 65 70 66-114 70 114 58-85 52 85 58-94 64 94 64-108 72 108v250z'/%3E%3C/g%3E%3Cg fill='%23261f1a' opacity='0.45'%3E%3Cellipse cx='500' cy='350' rx='420' ry='90'/%3E%3Cellipse cx='1150' cy='470' rx='480' ry='110'/%3E%3C/g%3E%3Cg fill='%23e0dad3' opacity='0.06'%3E%3Cellipse cx='760' cy='230' rx='560' ry='120'/%3E%3Cellipse cx='420' cy='560' rx='360' ry='90'/%3E%3Cellipse cx='1260' cy='620' rx='430' ry='100'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.07;
+  background-image:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 1200 800' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='1200' height='800' fill='none'/%3E%3Cg stroke='%236f5a41' stroke-width='2' fill='none' opacity='0.7'%3E%3Cpath d='M120 200c120-70 290-50 390 15 80 52 230 60 310 15 92-52 188-30 280 22'/%3E%3Cpath d='M80 520c140-65 300-75 420-18 115 55 250 48 350-5 108-57 230-50 320 10'/%3E%3Cpath d='M200 110c44 26 70 65 75 118M954 94c-36 31-57 72-62 126M480 630c42-25 71-69 75-126M720 676c-31-30-52-72-56-130'/%3E%3C/g%3E%3Cg fill='%23614d3b' opacity='0.45'%3E%3Cpath d='M260 250l86-58 140 20 66 82-35 76-126 38-102-54z'/%3E%3Cpath d='M700 206l106-36 142 31 74 88-54 108-140 24-103-57-35-85z'/%3E%3Cpath d='M525 464l86-42 130 28 42 94-72 82-134 12-78-54-17-78z'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+#root::before {
+  content: '';
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  width: 120px;
+  height: 120px;
+  pointer-events: none;
+  opacity: 0.1;
+  z-index: -1;
+  background:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='60' cy='60' r='56' fill='none' stroke='%23c5a059' stroke-width='1.5'/%3E%3Ccircle cx='60' cy='60' r='44' fill='none' stroke='%23c5a059' stroke-width='1'/%3E%3Cpath d='M60 12l8 40 40 8-40 8-8 40-8-40-40-8 40-8z' fill='none' stroke='%23c5a059' stroke-width='1.4'/%3E%3Cpath d='M60 26v68M26 60h68M37 37l46 46M83 37L37 83' stroke='%23c5a059' stroke-width='0.8'/%3E%3C/svg%3E")
+      center/contain no-repeat;
+}
+
+.parchment-panel {
+  background-color: rgba(33, 26, 22, 0.9);
+  background-image:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+  box-shadow:
+    inset 0 1px 0 rgba(216, 188, 114, 0.12),
+    0 4px 24px rgba(0, 0, 0, 0.45);
+}
+
+.wood-frame {
+  background: linear-gradient(145deg, var(--color-forest-mid) 0%, var(--color-forest) 52%, #241a14 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(216, 188, 114, 0.12),
+    0 10px 30px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(185, 154, 82, 0.18);
+}
+
+/* Skyrim-style chat surface: light parchment + dark iron trim */
+.chat-parchment {
+  background: #efe2bf;
+  color: var(--color-ink);
+  background-image:
+    radial-gradient(circle at 10% 10%, rgba(255, 255, 255, 0.24) 0%, transparent 38%),
+    url("https://www.transparenttextures.com/patterns/p6.png"),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='t'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23t)' opacity='0.06'/%3E%3C/svg%3E");
+  border: 1px solid #c5a059;
+  box-shadow:
+    inset 0 0 0 1px rgba(36, 32, 29, 0.45),
+    inset 0 0 0 4px rgba(197, 160, 89, 0.25),
+    inset 0 26px 30px -24px rgba(57, 42, 30, 0.35),
+    inset 0 -26px 30px -24px rgba(57, 42, 30, 0.35),
+    inset -16px 0 18px -14px rgba(57, 42, 30, 0.22),
+    inset 16px 0 18px -14px rgba(57, 42, 30, 0.22),
+    0 10px 24px rgba(0, 0, 0, 0.35);
+}
+
+/* Carved stone / aged metal button */
+.skyrim-button {
+  border: 1px solid var(--color-iron);
+  color: #efe3c6;
+  background: linear-gradient(180deg, #46362b 0%, #34271f 48%, #281e18 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(229, 214, 187, 0.22),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.45),
+    0 2px 8px rgba(0, 0, 0, 0.32);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.55);
+}
+
+.skyrim-button:hover:not(:disabled) {
+  background: linear-gradient(180deg, #584336 0%, #433228 50%, #30241d 100%);
+}
+
+.skyrim-button:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.ornate-divider {
+  border: 0;
+  height: 14px;
+  background-image:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 600 14' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 7h190m210 0h190' stroke='%23c5a059' stroke-width='1.5'/%3E%3Cpath d='M260 7l40-6 40 6-40 6z' fill='none' stroke='%23c5a059' stroke-width='1.5'/%3E%3Ccircle cx='300' cy='7' r='2' fill='%23c5a059'/%3E%3C/svg%3E");
+  background-size: 100% 14px;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.85;
+}
+
+.sword-divider {
+  border: 0;
+  height: 16px;
+  width: 100%;
+  background:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 900 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 8h360m160 0h360' stroke='%23c5a059' stroke-width='1.2'/%3E%3Cpath d='M420 8h60M445 2l6 6-6 6M455 2l-6 6 6 6' stroke='%23c5a059' stroke-width='1.2' fill='none'/%3E%3Crect x='438' y='6.4' width='24' height='3.2' fill='%23c5a059'/%3E%3C/svg%3E")
+      center/100% 16px no-repeat;
+  opacity: 0.8;
+}
+
+.scroll-surface {
+  border-radius: 18px 26px 20px 24px / 20px 18px 24px 22px !important;
+}
+
+.nav-stone {
+  border: 1px solid rgba(197, 160, 89, 0.35);
+  background: linear-gradient(180deg, #3a2c23 0%, #2e231c 55%, #241b16 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(225, 206, 173, 0.14),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.45),
+    0 2px 8px rgba(0, 0, 0, 0.28);
+}
+
+.nav-stone:hover {
+  box-shadow:
+    inset 0 1px 0 rgba(225, 206, 173, 0.2),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.45),
+    0 0 12px rgba(197, 160, 89, 0.32),
+    0 3px 10px rgba(0, 0, 0, 0.32);
+}
+
+.tome-stack-illustration {
+  height: 84px;
+  width: 100%;
+  margin-bottom: 10px;
+  background:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 280 90' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='280' height='90' fill='none'/%3E%3Cg opacity='0.85'%3E%3Crect x='40' y='58' width='190' height='18' rx='2' fill='%23402f24' stroke='%23c5a059'/%3E%3Crect x='58' y='40' width='170' height='16' rx='2' fill='%23332721' stroke='%23b58f4d'/%3E%3Crect x='72' y='24' width='145' height='14' rx='2' fill='%234a382c' stroke='%23d0ac67'/%3E%3Crect x='80' y='23' width='8' height='54' fill='%23c5a059' opacity='0.5'/%3E%3Crect x='196' y='24' width='8' height='52' fill='%23c5a059' opacity='0.4'/%3E%3C/g%3E%3C/svg%3E")
+      center / contain no-repeat;
+  opacity: 0.65;
+}
+
+/* Library-tab-only high fidelity scroll experiment */
