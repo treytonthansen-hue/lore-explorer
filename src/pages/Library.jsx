@@ -54,6 +54,7 @@ export default function Library() {
   const [searchParams, setSearchParams] = useSearchParams()
   const selectedGame = searchParams.get('game')?.trim() || ''
   const selectedRegion = searchParams.get('region')?.trim() || ''
+  const activeGame = selectedGame
   const isSpoilerShieldOn = spoilerShieldEnabled
 
   const apiKey = readGeminiKey()
@@ -94,7 +95,7 @@ export default function Library() {
         apiKey,
         model: model || undefined,
         spoilerShieldEnabled: isSpoilerShieldOn,
-        explorationGame: selectedGame,
+        explorationGame: activeGame,
         explorationRegion: selectedRegion,
         historyMessages: historyForApi,
         userMessage: text,
@@ -146,7 +147,7 @@ export default function Library() {
       messages,
       model,
       isSpoilerShieldOn,
-      selectedGame,
+      activeGame,
       selectedRegion,
     ],
   )
@@ -165,8 +166,13 @@ export default function Library() {
   }, [askArchivist, loading, searchParams, setSearchParams])
 
   useEffect(() => {
-    if (!selectedGame) return
-    const greeting = buildGreeting(selectedGame, selectedRegion)
+    if (!activeGame) return
+    localStorage.setItem('loreExplorerActiveGame', activeGame)
+    const greeting = buildGreeting(activeGame, selectedRegion)
+    isProcessingRef.current = false
+    setLoading(false)
+    setDraft('')
+    processedTopicRef.current = ''
     setMessages([
       {
         id: crypto.randomUUID(),
@@ -174,7 +180,7 @@ export default function Library() {
         text: greeting,
       },
     ])
-  }, [selectedGame, selectedRegion])
+  }, [activeGame, selectedRegion])
 
   const onSubmit = async (e) => {
     e.preventDefault()
@@ -188,7 +194,7 @@ export default function Library() {
       <div className="chat-parchment scroll-surface flex min-h-[320px] flex-1 flex-col md:min-h-0">
         <div className="flex flex-shrink-0 flex-wrap items-center justify-between gap-4 px-4 py-3">
           <h1 className="font-[family-name:var(--font-display)] text-xl font-semibold text-gold-bright">
-            Library - Lore Chat
+            Library - {activeGame || 'Lore Chat'}
           </h1>
           <div className="flex min-w-[200px] flex-1 flex-col gap-1 sm:max-w-xs sm:flex-none">
             <div className="flex items-center justify-between text-xs text-parchment-dim">

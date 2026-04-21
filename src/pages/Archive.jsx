@@ -4,12 +4,13 @@ import { loadTomes } from '../lib/tomeArchive'
 export default function Archive() {
   const tomes = useMemo(() => loadTomes(), [])
   const [selectedId, setSelectedId] = useState(tomes[0]?.id ?? null)
+  const activeGame = localStorage.getItem('loreExplorerActiveGame')?.trim() || ''
   const selected = tomes.find((t) => t.id === selectedId) ?? null
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-10">
       <h1 className="mb-2 text-center font-[family-name:var(--font-display)] text-3xl font-semibold text-gold-bright">
-        Archive
+        Archive - {activeGame || 'Tomes'}
       </h1>
       {tomes.length === 0 ? (
         <div className="wood-frame scroll-surface border border-gold/25 px-5 py-6 text-parchment-dim">
