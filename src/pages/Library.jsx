@@ -197,8 +197,8 @@ export default function Library() {
             Library - {activeGame || 'Lore Chat'}
           </h1>
           <div className="flex min-w-[200px] flex-1 flex-col gap-1 sm:max-w-xs sm:flex-none">
-            <div className="flex items-center justify-between text-xs text-parchment-dim">
-              <span>Spoiler Shield</span>
+            <div className="flex items-center justify-between">
+              <span className="text-sm font-semibold text-ink">Spoiler Shield</span>
               <button
                 type="button"
                 onClick={() => setSpoilerShieldEnabled((v) => !v)}
